@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepScan - Fake Website Intelligence Engine</title>
+    <meta name="description" content="Sistem mesin scan alamat website palsu mendalam.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <div class="radar-icon"></div>
+                <h1>DeepScan <span>V2.4</span></h1>
+            </div>
+            <p class="subtitle">Global Threat Intelligence & Fake Website Scanning System</p>
+        </header>
+
+        <!-- Main Interface -->
+        <main class="scanner-interface">
+            <div class="glass-panel input-section">
+                <h2>Parameter Pencarian</h2>
+                
+                <div class="input-group">
+                    <label for="keyword">Kata Kunci Pencarian (Target)</label>
+                    <input type="text" id="keyword" placeholder="Contoh: login, bank, asuransi, crypto..." autocomplete="off">
+                </div>
+
+                <div class="input-group">
+                    <label for="exclusions">Pengecualian Domain/Kata (Pisahkan dengan koma)</label>
+                    <input type="text" id="exclusions" placeholder="Contoh: resmi.com, wikipedia, pemerintah" autocomplete="off">
+                </div>
+
+                <button id="start-scan-btn" class="glow-btn">
+                    <span class="btn-text">INISIALISASI SCAN MENDALAM</span>
+                    <div class="btn-glow"></div>
+                </button>
+            </div>
+
+            <!-- Scanning Process Area -->
+            <div id="scanning-process" class="glass-panel console-section hidden">
+                <div class="console-header">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                    <span class="console-title">System Execution Terminal</span>
+                </div>
+                <div id="terminal-output" class="terminal-body">
+                    <p class="sys-msg">> Menunggu perintah inisialisasi...</p>
+                </div>
+                
+                <div class="progress-container hidden" id="progress-container">
+                    <div class="progress-bar" id="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <div class="progress-stats">
+                        <span id="scan-status-text">Memindai Node Global...</span>
+                        <span id="scan-percentage">0%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Area -->
+            <div id="results-panel" class="glass-panel results-section hidden">
+                <div class="results-header">
+                    <h2>Laporan Analisis Ancaman</h2>
+                    <span class="badge danger" id="threat-count">0 Ditemukan</span>
+                </div>
+                <div class="results-meta">
+                    <p>Target: <span id="meta-keyword" class="highlight"></span></p>
+                    <p>Pengecualian: <span id="meta-exclusions" class="highlight"></span></p>
+                </div>
+                
+                <div class="table-container">
+                    <table class="threat-table">
+                        <thead>
+                            <tr>
+                                <th>URL Terdeteksi (Phishing/Fake)</th>
+                                <th>IP Address</th>
+                                <th>Status Registrasi</th>
+                                <th>Tingkat Ancaman</th>
+                            </tr>
+                        </thead>
+                        <tbody id="results-body">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
